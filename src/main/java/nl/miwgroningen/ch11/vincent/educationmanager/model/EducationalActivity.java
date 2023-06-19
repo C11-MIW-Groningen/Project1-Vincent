@@ -1,7 +1,6 @@
 package nl.miwgroningen.ch11.vincent.educationmanager.model;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,8 +12,8 @@ import java.util.List;
  */
 
 @Entity
-@Getter
-@Setter
+@Getter @Setter
+@Builder @NoArgsConstructor @AllArgsConstructor
 public class EducationalActivity implements Comparable<EducationalActivity> {
     @Id
     @GeneratedValue
