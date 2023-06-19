@@ -26,6 +26,10 @@ public class AdminController {
 
     @GetMapping("/seed")
     public String seedData() {
+        cohortRepository.deleteAll();
+        educationalActivityRepository.deleteAll();
+        studentRepository.deleteAll();
+
         EducationalActivity activity = EducationalActivity.builder().name("Software Engineering").build();
         EducationalActivity activity2 = EducationalActivity.builder().name("Functioneel Beheer").build();
 
@@ -41,14 +45,25 @@ public class AdminController {
         cohortRepository.save(cohort3);
 
         Student student1 = Student.builder().studentName("Student 1").build();
-        student1.getCohorts().add(cohort1);
-        student1.getCohorts().add(cohort2);
         Student student2 = Student.builder().studentName("Student 2").build();
-        student2.getCohorts().add(cohort1);
-        student2.getCohorts().add(cohort3);
         Student student3 = Student.builder().studentName("Student 3").build();
-        student3.getCohorts().add(cohort2);
-        student3.getCohorts().add(cohort3);
+
+        studentRepository.save(student1);
+        studentRepository.save(student2);
+        studentRepository.save(student3);
+
+        cohort1.addStudent(student1);
+        cohort1.addStudent(student2);
+
+        cohort2.addStudent(student1);
+        cohort2.addStudent(student3);
+
+        cohort3.addStudent(student2);
+        cohort3.addStudent(student3);
+
+        cohortRepository.save(cohort1);
+        cohortRepository.save(cohort2);
+        cohortRepository.save(cohort3);
 
         return "redirect:/";
     }

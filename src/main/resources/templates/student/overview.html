@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org">
+<head th:replace="fragments/general :: baseHeader(~{:: title})">
+    <title>overview</title>
+</head>
+<body>
+
+<div th:replace="fragments/general :: navbar"></div>
+
+<div class="container">
+    <h1>overview</h1>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Cohorts</th>
+            <th>Delete</th>
+        </tr>
+        <tr th:each="student : ${allStudents}">
+            <td th:text="${student.studentName}"></td>
+            <td>
+                <ul>
+                    <li th:each="cohort : ${student.cohorts}" th:text="${cohort.name}"></li>
+                </ul>
+            </td>
+            <td><a th:href="@{/student/delete/{studentId}(studentId = ${student.studentId})}">delete</a></td>
+        </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th>Cohort name</th>
+            <th>Delete</th>
+        </tr>
+        <tr th:each="cohort : ${allCohorts}">
+            <td th:text="${cohort.name}"></td>
+            <td><a th:href="@{/cohort/delete/{cohortId}(cohortId=${cohort.cohortId})}">delete</a></td>
+        </tr>
+    </table>
+</div>
+
+<div th:replace="fragments/general :: footer"></div>
+<div th:replace="fragments/general :: bottomScripts"></div>
+</body>
+</html>

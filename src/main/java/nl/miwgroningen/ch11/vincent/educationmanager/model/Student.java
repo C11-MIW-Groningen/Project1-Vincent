@@ -2,10 +2,7 @@ package nl.miwgroningen.ch11.vincent.educationmanager.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,6 +22,6 @@ public class Student {
 
     private String studentName;
 
-    @ManyToMany(mappedBy = "students")
+    @ManyToMany(mappedBy = "students", cascade = CascadeType.PERSIST)
     @Builder.Default private Set<Cohort> cohorts = new HashSet<>();
 }

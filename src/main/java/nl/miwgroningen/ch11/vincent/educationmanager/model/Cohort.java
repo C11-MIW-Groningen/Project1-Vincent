@@ -26,4 +26,12 @@ public class Cohort {
 
     @ManyToMany
     @Builder.Default private Set<Student> students = new HashSet<>();
+
+    public void addStudent(Student student) {
+        students.add(student);
+    }
+
+    public void removeStudent(Student student) {
+        students.remove(student);
+    }
 }
