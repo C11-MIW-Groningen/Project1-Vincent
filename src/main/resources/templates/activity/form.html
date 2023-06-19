@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org">
+<head th:replace="fragments/general :: baseHeader(~{:: title})">
+    <title>Create a new activity</title>
+</head>
+<body>
+
+<div th:replace="fragments/general :: navbar"></div>
+
+<div class="container">
+    <h1>Create a new activity</h1>
+
+    <form th:action="@{/activity/new}" method="post" th:object="${activity}">
+        <input type="hidden" th:field="*{activityId}">
+
+        <div class="form-group">
+            <label for="title" class="form-label">Name</label>
+            <input id="title" type="text" class="form-control" th:field="*{name}">
+        </div>
+
+        <div class="form-group">
+            <label for="authors" class="form-label">Super Activity</label>
+            <select id="authors" class="form-control" th:field="*{superActivity}">
+                <option value="">This is a topLevel activity</option>
+                <option th:each="activity : ${allActivities}" th:value="${activity.activityId}" th:text="${activity}"></option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Save activity</button>
+        </div>
+    </form>
+</div>
+
+<div th:replace="fragments/general :: footer"></div>
+<div th:replace="fragments/general :: bottomScripts"></div>
+</body>
+</html>

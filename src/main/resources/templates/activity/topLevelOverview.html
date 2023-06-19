@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org">
+<head th:replace="fragments/general :: baseHeader(~{:: title})">
+    <title>Top Level Overview</title>
+</head>
+<body>
+
+<div th:replace="fragments/general :: navbar"></div>
+
+<div class="container">
+    <h1>Top Level Overview</h1>
+
+    <section th:fragment="showActivities">
+        <ul>
+            <li th:each="activity : ${activities}">
+                <span th:text="${activity.name}"></span>
+                <section th:include=":: showActivities" th:with="activities = ${activity.subActivities}"></section>
+            </li>
+        </ul>
+    </section>
+
+    <section th:include=":: showActivities" th:with="activities = ${topLevelActivities}"></section>
+
+    <a th:href="@{/activity/new}">Create new Activity</a>
+</div>
+
+<div th:replace="fragments/general :: footer"></div>
+<div th:replace="fragments/general :: bottomScripts"></div>
+</body>
+</html>
