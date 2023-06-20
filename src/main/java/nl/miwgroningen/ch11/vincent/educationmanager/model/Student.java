@@ -22,6 +22,6 @@ public class Student {
 
     private String studentName;
 
-    @ManyToMany(mappedBy = "students", cascade = CascadeType.PERSIST)
+    @ManyToMany(mappedBy = "students")
     @Builder.Default private Set<Cohort> cohorts = new HashSet<>();
 }
