@@ -17,7 +17,9 @@
             <th>Size</th>
         </tr>
         <tr th:each="cohort : ${allCohorts}">
-            <td th:text="${cohort.name}"></td>
+            <td>
+                <a th:href="@{/cohort/detail/{cohortName}(cohortName = ${cohort.name})}" th:text="${cohort.name}"></a>
+            </td>
             <td th:text="${cohort.educationalActivity}"></td>
             <td th:text="${cohort.students.size()}"></td>
         </tr>
