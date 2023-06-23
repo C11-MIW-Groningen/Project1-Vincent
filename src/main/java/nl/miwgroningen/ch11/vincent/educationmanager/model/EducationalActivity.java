@@ -26,11 +26,11 @@ public class EducationalActivity implements Comparable<EducationalActivity> {
     @ManyToOne
     private EducationalActivity superActivity;
 
+    @OneToMany(mappedBy = "superActivity", cascade = CascadeType.PERSIST)
+    @Builder.Default private List<EducationalActivity> subActivities = new ArrayList<>();
+
     @OneToMany(mappedBy = "testedActivity")
     private Set<Assessment> assessedUsing;
-
-    @OneToMany(mappedBy = "superActivity")
-    private List<EducationalActivity> subActivities = new ArrayList<>();
 
     public int getDepth() {
         if (superActivity == null) {
