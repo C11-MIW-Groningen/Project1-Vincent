@@ -3,7 +3,9 @@ package nl.miwgroningen.ch11.vincent.educationmanager.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author Vincent Velthuizen <v.r.velthuizen@pl.hanze.nl>
@@ -24,8 +26,11 @@ public class EducationalActivity implements Comparable<EducationalActivity> {
     @ManyToOne
     private EducationalActivity superActivity;
 
+    @OneToMany(mappedBy = "testedActivity")
+    private Set<Assessment> assessedUsing;
+
     @OneToMany(mappedBy = "superActivity")
-    private List<EducationalActivity> subActivities;
+    private List<EducationalActivity> subActivities = new ArrayList<>();
 
     public int getDepth() {
         if (superActivity == null) {
