@@ -28,7 +28,7 @@
         </tr>
     </table>
 
-    <form th:action="@{/cohort/enrollstudent}" method="post" th:object="${enrollment}">
+    <form th:action="@{/cohort/enroll_student}" method="post" th:object="${enrollment}">
         <input type="hidden" th:field="*{cohort}">
 
         <div class="form-group">

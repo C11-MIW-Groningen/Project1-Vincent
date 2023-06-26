@@ -25,4 +25,11 @@ public class Question {
     private String questionText;
     private String assessmentCriteria;
     private Integer pointsPossible;
+
+    public void setPointsPossible(Integer pointsPossible) {
+        if (pointsPossible < 0) {
+            throw new IllegalArgumentException("A question cannot have negative points");
+        }
+        this.pointsPossible = pointsPossible;
+    }
 }

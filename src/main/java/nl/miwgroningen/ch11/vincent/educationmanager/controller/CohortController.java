@@ -54,7 +54,7 @@ public class CohortController {
         return "redirect:/student/overview";
     }
 
-    @PostMapping("/enrollstudent")
+    @PostMapping("/enroll_student")
     public String enrollStudent(@ModelAttribute("enrollment") EnrollmentDTO enrollment, BindingResult result) {
         if (result.hasErrors()) {
             return "redirect:/cohort/overview";

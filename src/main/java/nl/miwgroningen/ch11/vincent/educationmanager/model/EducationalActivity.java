@@ -54,7 +54,7 @@ public class EducationalActivity implements Comparable<EducationalActivity> {
         String superActivityString = "";
 
         if (superActivity != null) {
-            superActivityString = superActivity.toString() + " - ";
+            superActivityString = superActivity + " - ";
         }
 
         return superActivityString + name;

@@ -1,6 +1,5 @@
 package nl.miwgroningen.ch11.vincent.educationmanager.controller;
 
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import nl.miwgroningen.ch11.vincent.educationmanager.model.Cohort;
 import nl.miwgroningen.ch11.vincent.educationmanager.model.Student;
@@ -10,10 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.HashSet;
 import java.util.Optional;
 
 /**
